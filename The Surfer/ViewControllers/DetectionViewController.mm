@@ -10,9 +10,13 @@
 
 @interface DetectionViewController ()
 
+@property (nonatomic, retain) IBOutlet UIImageView *imgDisplay;
+@property (nonatomic, retain) CvVideoCamera *videoCamera;
+
 @end
 
 @implementation DetectionViewController
+@synthesize imgDisplay, videoCamera;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,6 +30,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.videoCamera = [[CvVideoCamera alloc] initWithParentView:imgDisplay];
+    [self.videoCamera setDelegate:self];
+    self.videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
+    self.videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset352x288;
+    self.videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationPortrait;
+    self.videoCamera.defaultFPS = 30;
 	// Do any additional setup after loading the view.
 }
 
@@ -34,5 +44,15 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - 
+#pragma mark - OpenCV Delegate Methods
+
+#ifdef __cplusplus
+- (void)processImage:(Mat&)image {
+
+}
+#endif
+
 
 @end
