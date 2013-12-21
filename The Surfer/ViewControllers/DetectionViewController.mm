@@ -32,10 +32,11 @@
     [super viewDidLoad];
     self.videoCamera = [[CvVideoCamera alloc] initWithParentView:imgDisplay];
     [self.videoCamera setDelegate:self];
-    self.videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
+    self.videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
     self.videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset352x288;
     self.videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationPortrait;
     self.videoCamera.defaultFPS = 30;
+    [self.videoCamera start];
 	// Do any additional setup after loading the view.
 }
 

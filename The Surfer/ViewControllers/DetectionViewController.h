@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 // OpenCV Imports
 #import <opencv2/opencv.hpp>
@@ -15,7 +16,7 @@
 using namespace cv;
 
 @interface DetectionViewController : UIViewController <CvVideoCameraDelegate> {
-    UIImageView *imgDisplay;
+    IBOutlet UIImageView *imgDisplay;
     CvVideoCamera *videoCamera;
 }
 
