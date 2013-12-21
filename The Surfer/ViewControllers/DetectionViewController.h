@@ -17,7 +17,13 @@ using namespace cv;
 
 @interface DetectionViewController : UIViewController <CvVideoCameraDelegate> {
     IBOutlet UIImageView *imgDisplay;
+    IBOutlet UIButton *btnVoiceRecognize;
+    
     CvVideoCamera *videoCamera;
 }
+
+@property (nonatomic, retain) IBOutlet UIImageView *imgDisplay;
+@property (nonatomic, retain) IBOutlet UIButton *btnVoiceRecognize;
+@property (nonatomic, retain) CvVideoCamera *videoCamera;
 
 @end

@@ -9,7 +9,7 @@
         <scene sceneID="cUi-kZ-frf">
             <objects>
                 <navigationController id="rS3-R9-Ivy" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="yXu-0R-QUA">
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translucent="NO" id="yXu-0R-QUA">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -24,14 +24,16 @@
         <scene sceneID="LN4-R0-FEn">
             <objects>
                 <viewController id="CBv-dB-QJd" customClass="DetectionViewController" sceneMemberID="viewController">
-                    <imageView key="view" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="k4B-Ts-nuL">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Noh-7F-A3i"/>
+                        <viewControllerLayoutGuide type="bottom" id="yBl-QR-K8k"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lzv-Pc-kf9">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
                     <navigationItem key="navigationItem" title="The Surfer" id="EgA-Ty-yIi"/>
-                    <connections>
-                        <outlet property="imgDisplay" destination="k4B-Ts-nuL" id="VGf-ZK-xA6"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aac-bT-WMw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
