@@ -25,6 +25,7 @@ using namespace cv;
     CvVideoCamera *videoCamera;
     
     SpeechToTextModule *speechDetector;
+    UITextField *fakeTextField;
 }
 
 @property (nonatomic, retain) IBOutlet UIImageView *imgDisplay;

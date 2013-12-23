@@ -35,7 +35,8 @@
     [super drawRect:rect];
     static bool reverse = false;
     
-    CGFloat scaleFactor = ((rect.size.height / 2) - 4.0) / kMaxVolumeSampleValue;
+    CGFloat scaleFactor = 65;
+    NSLog(@"Scale Factor: %f", scaleFactor);
     CGContextRef context = UIGraphicsGetCurrentContext();
     
     CGContextBeginPath(context);
