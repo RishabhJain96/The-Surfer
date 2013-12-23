@@ -13,7 +13,7 @@
 @end
 
 @implementation DetectionViewController
-@synthesize imgDisplay, videoCamera, btnVoiceRecognize;
+@synthesize imgDisplay, videoCamera, btnVoiceRecognize, speechDetector;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,7 +44,10 @@
     self.videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationPortrait;
     self.videoCamera.defaultFPS = 30;
     [self.videoCamera start];
-	// Do any additional setup after loading the view.
+    
+    // Setup Speech Detector
+    self.speechDetector = [[SpeechToTextModule alloc] init];
+    [self.speechDetector setDelegate:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,12 +55,32 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - 
+#pragma mark -
 #pragma mark - Speech to Text Methods
 
 - (void)startVocalRecognition:(id)sender {
-    NSLog(@"Beginning to Recognize Voice");
+    if(![self.speechDetector recording]) {
+        [self.speechDetector beginRecording];
+        NSLog(@"Beginning to recognize voice");
+        
+    }
+    else {
+        [self.speechDetector stopRecording:NO];
+        NSLog(@"Ending recognizing voice");
+    }
+}
+
+- (BOOL)didReceiveVoiceResponse:(NSData *)data {
+    NSError* error;
+    NSDictionary* json = [NSJSONSerialization
+                          JSONObjectWithData:data
+                          options:kNilOptions
+                          error:&error];
     
+    NSArray* voiceCommands = [json objectForKey:@"hypotheses"];
+    NSLog(@"hypotheses: %@", voiceCommands);
+    
+    return YES;
 }
 
 #pragma mark - 
