@@ -1,0 +1,1 @@
+../../VPPCoreData/VPPCoreData/Categories/NSManagedObject+VPPCDActiveRecord.h
