@@ -1,1 +1,0 @@
-../../MSNavigationSwipeController/MSNavigationSwipeController/MSNavigationSwipeController.h

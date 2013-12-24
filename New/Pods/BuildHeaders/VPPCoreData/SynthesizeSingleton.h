@@ -1,1 +1,0 @@
-../../VPPCoreData/VPPCoreData/SynthesizeSingleton.h

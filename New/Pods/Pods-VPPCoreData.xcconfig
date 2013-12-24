@@ -1,1 +1,0 @@
-PODS_VPPCOREDATA_OTHER_LDFLAGS = -framework CoreData
