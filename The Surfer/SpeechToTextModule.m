@@ -271,10 +271,15 @@ static void DeriveBufferSize (AudioQueueRef audioQueue, AudioStreamBasicDescript
     if (detectedSpeech) {
         if (meterStateDB.mAveragePower < kSilenceThresholdDB) {
             samplesBelowSilence++;
-            if (samplesBelowSilence > kSilenceThresholdNumSamples)
+            if (samplesBelowSilence > kSilenceThresholdNumSamples) {
                 [self stopRecording:YES];
+                [delegate powerData:-1.0f];
+            } else {
+                [delegate powerData:dataPoint];
+            }
         } else {
             samplesBelowSilence = 0;
+            [delegate powerData:dataPoint];
         }
     }
 }

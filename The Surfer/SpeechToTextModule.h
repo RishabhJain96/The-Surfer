@@ -50,6 +50,7 @@ typedef struct AQRecorderState {
 - (void)dismissSineWaveView:(SineWaveViewController *)view cancelled:(BOOL)wasCancelled;
 - (void)showLoadingView;
 - (void)requestFailedWithError:(NSError *)error;
+- (void)powerData:(float)power;
 @end
 
 @interface SpeechToTextModule : NSObject <UIAlertViewDelegate, SineWaveViewDelegate> {

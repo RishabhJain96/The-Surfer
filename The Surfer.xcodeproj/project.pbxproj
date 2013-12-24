@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		185CD5D2186A27D000464607 /* microphone_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 185CD5C6186A27D000464607 /* microphone_1.png */; };
+		185CD5D3186A27D000464607 /* microphone_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 185CD5C7186A27D000464607 /* microphone_1@2x.png */; };
+		185CD5D4186A27D000464607 /* microphone_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 185CD5C8186A27D000464607 /* microphone_2.png */; };
+		185CD5D5186A27D000464607 /* microphone_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 185CD5C9186A27D000464607 /* microphone_2@2x.png */; };
+		185CD5D6186A27D000464607 /* microphone_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 185CD5CA186A27D000464607 /* microphone_3.png */; };
+		185CD5D7186A27D000464607 /* microphone_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 185CD5CB186A27D000464607 /* microphone_3@2x.png */; };
+		185CD5D8186A27D000464607 /* microphone_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 185CD5CC186A27D000464607 /* microphone_4.png */; };
+		185CD5D9186A27D000464607 /* microphone_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 185CD5CD186A27D000464607 /* microphone_4@2x.png */; };
+		185CD5DA186A27D000464607 /* microphone_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 185CD5CE186A27D000464607 /* microphone_5.png */; };
+		185CD5DB186A27D000464607 /* microphone_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 185CD5CF186A27D000464607 /* microphone_5@2x.png */; };
+		185CD5DC186A27D000464607 /* microphone_6.png in Resources */ = {isa = PBXBuildFile; fileRef = 185CD5D0186A27D000464607 /* microphone_6.png */; };
+		185CD5DD186A27D000464607 /* microphone_6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 185CD5D1186A27D000464607 /* microphone_6@2x.png */; };
 		18831F421867C44900491E74 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 18831F381867C44900491E74 /* bg.png */; };
 		18831F431867C44900491E74 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 18831F381867C44900491E74 /* bg.png */; };
 		18831F441867C44900491E74 /* mic.png in Resources */ = {isa = PBXBuildFile; fileRef = 18831F391867C44900491E74 /* mic.png */; };
@@ -50,6 +62,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		185CD5C6186A27D000464607 /* microphone_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = microphone_1.png; sourceTree = "<group>"; };
+		185CD5C7186A27D000464607 /* microphone_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "microphone_1@2x.png"; sourceTree = "<group>"; };
+		185CD5C8186A27D000464607 /* microphone_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = microphone_2.png; sourceTree = "<group>"; };
+		185CD5C9186A27D000464607 /* microphone_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "microphone_2@2x.png"; sourceTree = "<group>"; };
+		185CD5CA186A27D000464607 /* microphone_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = microphone_3.png; sourceTree = "<group>"; };
+		185CD5CB186A27D000464607 /* microphone_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "microphone_3@2x.png"; sourceTree = "<group>"; };
+		185CD5CC186A27D000464607 /* microphone_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = microphone_4.png; sourceTree = "<group>"; };
+		185CD5CD186A27D000464607 /* microphone_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "microphone_4@2x.png"; sourceTree = "<group>"; };
+		185CD5CE186A27D000464607 /* microphone_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = microphone_5.png; sourceTree = "<group>"; };
+		185CD5CF186A27D000464607 /* microphone_5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "microphone_5@2x.png"; sourceTree = "<group>"; };
+		185CD5D0186A27D000464607 /* microphone_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = microphone_6.png; sourceTree = "<group>"; };
+		185CD5D1186A27D000464607 /* microphone_6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "microphone_6@2x.png"; sourceTree = "<group>"; };
 		18831F381867C44900491E74 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		18831F391867C44900491E74 /* mic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mic.png; sourceTree = "<group>"; };
 		18831F3A1867C44900491E74 /* SineWaveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SineWaveViewController.h; sourceTree = "<group>"; };
@@ -112,6 +136,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		185CD5C4186A27C400464607 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				18BC60A31866481E00E281E7 /* The Surfer-Info.plist */,
+				18BC60A41866481E00E281E7 /* InfoPlist.strings */,
+				18BC60A71866481E00E281E7 /* main.m */,
+				18BC60A91866481E00E281E7 /* The Surfer-Prefix.pch */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		185CD5C5186A27CB00464607 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				185CD5DE186A27D500464607 /* Microphone */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		185CD5DE186A27D500464607 /* Microphone */ = {
+			isa = PBXGroup;
+			children = (
+				185CD5C6186A27D000464607 /* microphone_1.png */,
+				185CD5C7186A27D000464607 /* microphone_1@2x.png */,
+				185CD5C8186A27D000464607 /* microphone_2.png */,
+				185CD5C9186A27D000464607 /* microphone_2@2x.png */,
+				185CD5CA186A27D000464607 /* microphone_3.png */,
+				185CD5CB186A27D000464607 /* microphone_3@2x.png */,
+				185CD5CC186A27D000464607 /* microphone_4.png */,
+				185CD5CD186A27D000464607 /* microphone_4@2x.png */,
+				185CD5CE186A27D000464607 /* microphone_5.png */,
+				185CD5CF186A27D000464607 /* microphone_5@2x.png */,
+				185CD5D0186A27D000464607 /* microphone_6.png */,
+				185CD5D1186A27D000464607 /* microphone_6@2x.png */,
+			);
+			name = Microphone;
+			sourceTree = "<group>";
+		};
 		18831F501867C45D00491E74 /* SpeechToText */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,10 +238,8 @@
 		18BC60A21866481E00E281E7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				18BC60A31866481E00E281E7 /* The Surfer-Info.plist */,
-				18BC60A41866481E00E281E7 /* InfoPlist.strings */,
-				18BC60A71866481E00E281E7 /* main.m */,
-				18BC60A91866481E00E281E7 /* The Surfer-Prefix.pch */,
+				185CD5C5186A27CB00464607 /* Images */,
+				185CD5C4186A27C400464607 /* Core */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -317,11 +377,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				18BC60B71866481E00E281E7 /* Images.xcassets in Resources */,
+				185CD5DA186A27D000464607 /* microphone_5.png in Resources */,
+				185CD5D8186A27D000464607 /* microphone_4.png in Resources */,
+				185CD5D5186A27D000464607 /* microphone_2@2x.png in Resources */,
+				185CD5D9186A27D000464607 /* microphone_4@2x.png in Resources */,
+				185CD5D4186A27D000464607 /* microphone_2.png in Resources */,
 				18831F441867C44900491E74 /* mic.png in Resources */,
+				185CD5DD186A27D000464607 /* microphone_6@2x.png in Resources */,
 				18831F481867C44900491E74 /* SineWaveViewController.xib in Resources */,
+				185CD5DB186A27D000464607 /* microphone_5@2x.png in Resources */,
 				18BC60A61866481E00E281E7 /* InfoPlist.strings in Resources */,
+				185CD5D7186A27D000464607 /* microphone_3@2x.png in Resources */,
+				185CD5D3186A27D000464607 /* microphone_1@2x.png in Resources */,
+				185CD5DC186A27D000464607 /* microphone_6.png in Resources */,
 				18831F421867C44900491E74 /* bg.png in Resources */,
+				185CD5D2186A27D000464607 /* microphone_1.png in Resources */,
 				18BC60AF1866481E00E281E7 /* Main.storyboard in Resources */,
+				185CD5D6186A27D000464607 /* microphone_3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,17 +19,18 @@
 using namespace cv;
 
 @interface DetectionViewController : UIViewController <CvVideoCameraDelegate, SpeechToTextModuleDelegate> {
+    
     IBOutlet UIImageView *imgDisplay;
-    IBOutlet UIButton *btnVoiceRecognize;
     
     CvVideoCamera *videoCamera;
-    
     SpeechToTextModule *speechDetector;
-    UITextField *fakeTextField;
+    
+    UIImageView *microphone;
+    UILabel *lblCurrent;
 }
 
-@property (nonatomic, retain) IBOutlet UIImageView *imgDisplay;
-@property (nonatomic, retain) IBOutlet UIButton *btnVoiceRecognize;
+@property (nonatomic, retain) IBOutlet UIImageView *imgDisplay, *microphone;
+@property (nonatomic, retain) UILabel *lblCurrent;
 @property (nonatomic, retain) CvVideoCamera *videoCamera;
 @property (nonatomic, retain) SpeechToTextModule *speechDetector;
 
