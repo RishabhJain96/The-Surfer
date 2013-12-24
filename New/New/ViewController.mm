@@ -136,6 +136,13 @@
                           options:kNilOptions
                           error:&error];
     
+    if([[json objectForKey:@"hypotheses"] count] <= 0) {
+        [lbl setText:@"Speak More Clearly"];
+        [speech startSpeakingString:@"Speak More Clearly!"];
+        [converter performSelector:@selector(beginRecording) withObject:nil afterDelay:1.0];
+        return NO;
+    }
+    
     NSDictionary *voiceCommands = [json objectForKey:@"hypotheses"][0];
     
     CGFloat confidence = [[voiceCommands objectForKey:@"confidence"] floatValue];
@@ -145,6 +152,7 @@
         [lbl setText:@"Speak More Clearly"];
         [speech startSpeakingString:@"Speak More Clearly!"];
         [converter performSelector:@selector(beginRecording) withObject:nil afterDelay:1.0];
+        return NO;
     } else {
         NSString *content = [self stringWithSentenceCapitalization:utterance];
         content = [NSString stringWithFormat:@"\"%@\"", content];
@@ -159,7 +167,6 @@
         lbl.frame = newFrame;
     }
     
-    NSLog(@"Confidence: %f | Utterance: %@", confidence, utterance);
     return YES;
 }
 
