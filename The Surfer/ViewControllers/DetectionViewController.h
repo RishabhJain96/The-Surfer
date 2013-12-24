@@ -15,6 +15,8 @@
 
 //SpeechToText Imports
 #import "SpeechToTextModule.h"
+#import <AVFoundation/AVFoundation.h>
+#import <RJGoogleTTS/GoogleTTS.h>
 
 using namespace cv;
 
@@ -24,6 +26,8 @@ using namespace cv;
     
     CvVideoCamera *videoCamera;
     SpeechToTextModule *speechDetector;
+    AVAudioPlayer *player;
+    GoogleTTS *tts;
     
     UIImageView *microphone;
     UILabel *lblCurrent;
@@ -33,5 +37,7 @@ using namespace cv;
 @property (nonatomic, retain) UILabel *lblCurrent;
 @property (nonatomic, retain) CvVideoCamera *videoCamera;
 @property (nonatomic, retain) SpeechToTextModule *speechDetector;
+@property (nonatomic, retain) AVAudioPlayer *player;
+@property (nonatomic, retain) GoogleTTS *tts;
 
 @end

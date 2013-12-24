@@ -265,8 +265,8 @@
 		18BC60D31866482200E281E7 /* Local */ = {
 			isa = PBXGroup;
 			children = (
-				18831F501867C45D00491E74 /* SpeechToText */,
 				18BC60AD1866481E00E281E7 /* Main.storyboard */,
+				18831F501867C45D00491E74 /* SpeechToText */,
 				18BC60D51866483E00E281E7 /* DetectionViewController */,
 				18BC60D41866482700E281E7 /* Delegate */,
 			);

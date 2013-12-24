@@ -19,18 +19,21 @@ PODS:
     - AFNetworking/NSURLConnection
   - MSNavigationSwipeController (0.0.1)
   - OpenCV (2.4.7)
+  - RJGoogleTTS (0.0.1)
   - VPPCoreData (0.2.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0.3)
   - MSNavigationSwipeController (~> 0.0.1)
   - OpenCV (~> 2.4.7)
+  - RJGoogleTTS (~> 0.0.1)
   - VPPCoreData (~> 0.2.0)
 
 SPEC CHECKSUMS:
   AFNetworking: e499052cbf3d743e9bb727bb37adb9dc2547ba15
   MSNavigationSwipeController: 1aead4baa97fa4b552826b42f58650c99cc7170f
   OpenCV: d1abed1d6ce401b5adb305291da640d07312fd1f
+  RJGoogleTTS: 3a68dd66c3c041f43ed98eaedfa21cc0e6bc26dc
   VPPCoreData: e85ad03f891ed3a6e37e19cbb1bbe815703e7c7f
 
-COCOAPODS: 0.27.1
+COCOAPODS: 0.28.0

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9B8D3685B43B407BBDB40572"
+               BlueprintIdentifier = "3A0B4019D2104420AD962200"
                BuildableName = "libPods-MSNavigationSwipeController.a"
                BlueprintName = "Pods-MSNavigationSwipeController"
                ReferencedContainer = "container:Pods.xcodeproj">

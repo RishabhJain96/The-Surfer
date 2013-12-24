@@ -13,7 +13,7 @@
 @end
 
 @implementation DetectionViewController
-@synthesize imgDisplay, microphone, videoCamera, speechDetector, lblCurrent;
+@synthesize imgDisplay, microphone, videoCamera, speechDetector, lblCurrent, player, tts;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -60,6 +60,9 @@
     [microphone setCenter:CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2 + 90)];
     [self.view addSubview:self.microphone];
     [self.microphone setHidden:YES];
+    
+    // Setup GoogleTTS
+    tts = [[GoogleTTS alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,11 +75,10 @@
 
 - (void)startVocalRecognition:(id)sender {
     if(![self.speechDetector recording]) {
-        [self.speechDetector beginRecording];
+        [self playText:@"Speak Now"];
+        [self.speechDetector performSelector:@selector(beginRecording) withObject:nil afterDelay:1.0];
         [lblCurrent setText:@"Speak Now!"];
         [microphone setHidden:false];
-        NSLog(@"Beginning to recognize voice");
-        
     } else {
         [self.speechDetector stopRecording:NO];
         NSLog(@"Ending recognizing voice");
@@ -92,7 +94,7 @@
     // if -1 make label say analyzing
     if(power == -1.0f) {
         [lblCurrent setText:@"Analyzing Speech"];
-        //[speech startSpeakingString:@"Analyzing Speech"];
+        [self playText:@"Analyzing Speech"];
     } else {
         if (0<power<=0.06) {
             [microphone setImage:[UIImage imageNamed:@"microphone_1.png"]];
@@ -121,6 +123,9 @@
     
     if([[json objectForKey:@"hypotheses"] count] <= 0) {
         [self.lblCurrent setText:@"Speak More Clearly"];
+        
+        
+        
         //[speech startSpeakingString:@"Speak More Clearly!"];
         [speechDetector performSelector:@selector(beginRecording) withObject:nil afterDelay:1.0];
         return NO;
@@ -133,13 +138,14 @@
     
     if(utterance == NULL || confidence < 0.5) {
         [lblCurrent setText:@"Speak More Clearly"];
-        //[speech startSpeakingString:@"Speak More Clearly!"];
+        [self playText:@"Speak More Clearly"];
         [speechDetector performSelector:@selector(beginRecording) withObject:nil afterDelay:1.0];
         return NO;
     } else {
         NSString *content = [utterance capitalizedString];
         content = [NSString stringWithFormat:@"\"%@\"", content];
         [lblCurrent setText:content];
+        [self playText:content];
         
         CGSize maximumLabelSize = CGSizeMake(296, FLT_MAX);
         
@@ -172,6 +178,16 @@
 
 }
 #endif
+
+#pragma mark - 
+#pragma mark - GoogleTTS Methods
+
+- (void)playText:(NSString *)text {
+    [tts convertTextToSpeech:text withCompletion:^(NSMutableData *response) {
+        player = [[AVAudioPlayer alloc] initWithData:response error:nil];
+        [player play];
+    }];
+}
 
 
 @end
