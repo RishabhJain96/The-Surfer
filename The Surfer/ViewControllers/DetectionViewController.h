@@ -31,6 +31,9 @@ using namespace cv;
     
     UIImageView *microphone;
     UILabel *lblCurrent;
+    
+    float lastPower;
+    NSInteger lastMicrophone;
 }
 
 @property (nonatomic, retain) IBOutlet UIImageView *imgDisplay, *microphone;

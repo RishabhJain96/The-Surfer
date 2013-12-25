@@ -88,29 +88,47 @@
 #pragma mark - 
 #pragma mark - SpeechToText Delegate Methods
 
-- (void) powerData:(float)power
-{
+- (void)powerData:(float)power {
     NSLog(@"Power Data: %f", power);
     // if -1 make label say analyzing
     if(power == -1.0f) {
         [lblCurrent setText:@"Analyzing Speech"];
         [self playText:@"Analyzing Speech"];
+        lastPower = -1;
+        lastMicrophone = 1;
     } else {
-        if (0<power<=0.06) {
-            [microphone setImage:[UIImage imageNamed:@"microphone_1.png"]];
-        }else if (0.06<power<=0.1666) {
-            [microphone setImage:[UIImage imageNamed:@"microphone_2.png"]];
-        }else if (0.1666<power<=0.3333) {
-            [microphone setImage:[UIImage imageNamed:@"microphone_3.png"]];
-        }else if (0.3333<power<=0.5000) {
-            [microphone setImage:[UIImage imageNamed:@"microphone_4.png"]];
-        }else if (0.5000<power<=0.6666) {
-            [microphone setImage:[UIImage imageNamed:@"microphone_5.png"]];
-        }else if (0.6666<power<=0.8333) {
-            [microphone setImage:[UIImage imageNamed:@"microphone_6.png"]];
-        }else {
-            [microphone setImage:[UIImage imageNamed:@"microphone_1.png"]];
+        if (lastPower == -1) {
+            if (0.0f < lastPower <= 1/6.) {
+                lastMicrophone = 1;
+            } else if (1/6. < lastPower <= 2/6.) {
+                lastMicrophone = 2;
+            } else if (2/6. < lastPower <= 3/6.) {
+                lastMicrophone = 3;
+            } else if (3/6. < lastPower <= 4/6.) {
+                lastMicrophone = 4;
+            } else if (4/6. < lastPower <= 5/6.) {
+                lastMicrophone = 5;
+            } else {
+                lastMicrophone = 6;
+            }
         }
+        if (power - lastPower > 0.02) {
+            NSLog(@"Bigger Amplitude");
+            if (lastMicrophone != 6) {
+                lastMicrophone++;
+            }
+        } else if (power - lastPower < -0.02) {
+            NSLog(@"Smaller Amplitude");
+            if (lastMicrophone != 1) {
+                lastMicrophone--;
+            }
+        } else {
+            NSLog(@"Insignificant Change");
+            return;
+        }
+        NSString *mike = [NSString stringWithFormat:@"microphone_%i", lastMicrophone];
+        [microphone setImage:[UIImage imageNamed:mike]];
+        lastPower = power;
     }
 }
 
@@ -123,10 +141,6 @@
     
     if([[json objectForKey:@"hypotheses"] count] <= 0) {
         [self.lblCurrent setText:@"Speak More Clearly"];
-        
-        
-        
-        //[speech startSpeakingString:@"Speak More Clearly!"];
         [speechDetector performSelector:@selector(beginRecording) withObject:nil afterDelay:1.0];
         return NO;
     }
