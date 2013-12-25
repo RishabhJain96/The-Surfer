@@ -89,7 +89,6 @@
 #pragma mark - SpeechToText Delegate Methods
 
 - (void)powerData:(float)power {
-    NSLog(@"Power Data: %f", power);
     // if -1 make label say analyzing
     if(power == -1.0f) {
         [lblCurrent setText:@"Analyzing Speech"];
@@ -112,18 +111,15 @@
                 lastMicrophone = 6;
             }
         }
-        if (power - lastPower > 0.02) {
-            NSLog(@"Bigger Amplitude");
+        if (power - lastPower > 0.005) {
             if (lastMicrophone != 6) {
                 lastMicrophone++;
             }
-        } else if (power - lastPower < -0.02) {
-            NSLog(@"Smaller Amplitude");
+        } else if (power - lastPower < -0.005) {
             if (lastMicrophone != 1) {
                 lastMicrophone--;
             }
         } else {
-            NSLog(@"Insignificant Change");
             return;
         }
         NSString *mike = [NSString stringWithFormat:@"microphone_%i", lastMicrophone];
@@ -168,6 +164,12 @@
         CGRect newFrame = lblCurrent.frame;
         newFrame.size.height = expectedLabelSize.height;
         lblCurrent.frame = newFrame;
+        
+        if ([content rangeOfString:@"what"].location != NSNotFound) {
+            // We need to see what is in front of us!
+            NSLog(@"Using SIFT");
+            
+        }
     }
     
     return YES;
