@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		184D3CE21870C4790033B9A7 /* ObjectAnalyzer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 184D3CE11870C4790033B9A7 /* ObjectAnalyzer.mm */; };
 		185CD5D2186A27D000464607 /* microphone_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 185CD5C6186A27D000464607 /* microphone_1.png */; };
 		185CD5D3186A27D000464607 /* microphone_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 185CD5C7186A27D000464607 /* microphone_1@2x.png */; };
 		185CD5D4186A27D000464607 /* microphone_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 185CD5C8186A27D000464607 /* microphone_2.png */; };
@@ -47,6 +48,8 @@
 		18BC60C81866481E00E281E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18BC60C61866481E00E281E7 /* InfoPlist.strings */; };
 		18BC60CA1866481E00E281E7 /* The_SurferTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BC60C91866481E00E281E7 /* The_SurferTests.m */; };
 		18BC60D81866485700E281E7 /* DetectionViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 18BC60D71866485700E281E7 /* DetectionViewController.mm */; };
+		18E6C46C1870CCA500D55C46 /* TrainViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 18E6C46B1870CCA500D55C46 /* TrainViewController.mm */; };
+		18E6C4731870CE4500D55C46 /* UIImage+OpenCV.mm in Sources */ = {isa = PBXBuildFile; fileRef = 18E6C4711870CE4500D55C46 /* UIImage+OpenCV.mm */; };
 		18EB1C271867BE6500FF1507 /* Speex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EB1C261867BE6500FF1507 /* Speex.framework */; };
 		9A45DF01EF0940F0AA9931D4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C65475AE2CC4CB1ADFB3D0D /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -62,6 +65,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		184D3CE01870C4790033B9A7 /* ObjectAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjectAnalyzer.h; path = Modules/ObjectAnalyzer.h; sourceTree = "<group>"; };
+		184D3CE11870C4790033B9A7 /* ObjectAnalyzer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ObjectAnalyzer.mm; path = Modules/ObjectAnalyzer.mm; sourceTree = "<group>"; };
 		185CD5C6186A27D000464607 /* microphone_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = microphone_1.png; sourceTree = "<group>"; };
 		185CD5C7186A27D000464607 /* microphone_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "microphone_1@2x.png"; sourceTree = "<group>"; };
 		185CD5C8186A27D000464607 /* microphone_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = microphone_2.png; sourceTree = "<group>"; };
@@ -103,6 +108,10 @@
 		18BC60C91866481E00E281E7 /* The_SurferTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = The_SurferTests.m; sourceTree = "<group>"; };
 		18BC60D61866485700E281E7 /* DetectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetectionViewController.h; path = ViewControllers/DetectionViewController.h; sourceTree = "<group>"; };
 		18BC60D71866485700E281E7 /* DetectionViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DetectionViewController.mm; path = ViewControllers/DetectionViewController.mm; sourceTree = "<group>"; };
+		18E6C46A1870CCA500D55C46 /* TrainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrainViewController.h; path = ViewControllers/TrainViewController.h; sourceTree = "<group>"; };
+		18E6C46B1870CCA500D55C46 /* TrainViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = TrainViewController.mm; path = ViewControllers/TrainViewController.mm; sourceTree = "<group>"; };
+		18E6C4711870CE4500D55C46 /* UIImage+OpenCV.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "UIImage+OpenCV.mm"; sourceTree = "<group>"; };
+		18E6C4721870CE4500D55C46 /* UIImage+OpenCV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+OpenCV.h"; sourceTree = "<group>"; };
 		18EB1C261867BE6500FF1507 /* Speex.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speex.framework; path = SpeechToText/Speex.framework; sourceTree = "<group>"; };
 		5C65475AE2CC4CB1ADFB3D0D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDF7C1E11A0446D0A4C03E9F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -136,6 +145,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		184D3CDF1870C45A0033B9A7 /* ObjectAnalyzer */ = {
+			isa = PBXGroup;
+			children = (
+				184D3CE01870C4790033B9A7 /* ObjectAnalyzer.h */,
+				184D3CE11870C4790033B9A7 /* ObjectAnalyzer.mm */,
+			);
+			name = ObjectAnalyzer;
+			sourceTree = "<group>";
+		};
 		185CD5C4186A27C400464607 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,8 +284,10 @@
 			isa = PBXGroup;
 			children = (
 				18BC60AD1866481E00E281E7 /* Main.storyboard */,
+				184D3CDF1870C45A0033B9A7 /* ObjectAnalyzer */,
 				18831F501867C45D00491E74 /* SpeechToText */,
 				18BC60D51866483E00E281E7 /* DetectionViewController */,
+				18E6C4691870CC9300D55C46 /* TrainViewController */,
 				18BC60D41866482700E281E7 /* Delegate */,
 			);
 			name = Local;
@@ -291,9 +311,28 @@
 			name = DetectionViewController;
 			sourceTree = "<group>";
 		};
+		18E6C4691870CC9300D55C46 /* TrainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				18E6C46A1870CCA500D55C46 /* TrainViewController.h */,
+				18E6C46B1870CCA500D55C46 /* TrainViewController.mm */,
+			);
+			name = TrainViewController;
+			sourceTree = "<group>";
+		};
+		18E6C46D1870CD7C00D55C46 /* UIImage+OpenCV */ = {
+			isa = PBXGroup;
+			children = (
+				18E6C4711870CE4500D55C46 /* UIImage+OpenCV.mm */,
+				18E6C4721870CE4500D55C46 /* UIImage+OpenCV.h */,
+			);
+			name = "UIImage+OpenCV";
+			sourceTree = "<group>";
+		};
 		18EB1C211867BE0400FF1507 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				18E6C46D1870CD7C00D55C46 /* UIImage+OpenCV */,
 			);
 			name = External;
 			sourceTree = "<group>";
@@ -449,10 +488,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				18831F461867C44900491E74 /* SineWaveViewController.m in Sources */,
+				18E6C4731870CE4500D55C46 /* UIImage+OpenCV.mm in Sources */,
 				18831F4A1867C44900491E74 /* SpeechToTextModule.m in Sources */,
 				18BC60AC1866481E00E281E7 /* AppDelegate.m in Sources */,
 				18831F4E1867C44A00491E74 /* WaveDisplay.m in Sources */,
 				18BC60D81866485700E281E7 /* DetectionViewController.mm in Sources */,
+				18E6C46C1870CCA500D55C46 /* TrainViewController.mm in Sources */,
+				184D3CE21870C4790033B9A7 /* ObjectAnalyzer.mm in Sources */,
 				18BC60A81866481E00E281E7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -45,10 +45,10 @@
             </objects>
             <point key="canvasLocation" x="-41" y="79"/>
         </scene>
-        <!--View Controller - The Surfer Training-->
+        <!--Train View Controller - The Surfer Training-->
         <scene sceneID="rE0-jY-5v5">
             <objects>
-                <viewController id="yez-Ip-IFO" sceneMemberID="viewController">
+                <viewController id="yez-Ip-IFO" customClass="TrainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DmW-HS-g4i"/>
                         <viewControllerLayoutGuide type="bottom" id="9fn-Hx-gXL"/>

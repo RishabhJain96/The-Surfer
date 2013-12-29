@@ -13,7 +13,7 @@
 @end
 
 @implementation DetectionViewController
-@synthesize imgDisplay, microphone, videoCamera, speechDetector, lblCurrent, player, tts;
+@synthesize imgDisplay, microphone, videoCamera, speechDetector, lblCurrent, player, tts, objectAnalyzer;
 
 /**
  * Method: initWithNibName
@@ -76,6 +76,8 @@
     
     // Setup GoogleTTS
     tts = [[GoogleTTS alloc] init];
+    
+    matchImage = false;
 }
 
 /**
@@ -259,7 +261,9 @@
  * @param image - the image that the video camera received that should be analyzed if necessary
  */
 - (void)processImage:(Mat&)image {
-
+    if (matchImage) {
+        
+    }
 }
 
 #endif

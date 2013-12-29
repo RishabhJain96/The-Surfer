@@ -18,6 +18,9 @@
 #import <AVFoundation/AVFoundation.h>
 #import <RJGoogleTTS/GoogleTTS.h>
 
+// ObjectAnalyzer Imports
+#import "ObjectAnalyzer.h"
+
 using namespace cv;
 
 @interface DetectionViewController : UIViewController <CvVideoCameraDelegate, SpeechToTextModuleDelegate> {
@@ -34,6 +37,9 @@ using namespace cv;
     
     float lastPower;
     NSInteger lastMicrophone;
+    
+    ObjectAnalyzer *objectAnalyzer;
+    BOOL matchImage;
 }
 
 @property (nonatomic, retain) IBOutlet UIImageView *imgDisplay, *microphone;
@@ -42,5 +48,6 @@ using namespace cv;
 @property (nonatomic, retain) SpeechToTextModule *speechDetector;
 @property (nonatomic, retain) AVAudioPlayer *player;
 @property (nonatomic, retain) GoogleTTS *tts;
+@property (nonatomic, retain) ObjectAnalyzer *objectAnalyzer;
 
 @end
