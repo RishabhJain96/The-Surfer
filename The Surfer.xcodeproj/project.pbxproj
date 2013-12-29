@@ -39,7 +39,7 @@
 		18BC60A01866481E00E281E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BC609F1866481E00E281E7 /* UIKit.framework */; };
 		18BC60A61866481E00E281E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18BC60A41866481E00E281E7 /* InfoPlist.strings */; };
 		18BC60A81866481E00E281E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BC60A71866481E00E281E7 /* main.m */; };
-		18BC60AC1866481E00E281E7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BC60AB1866481E00E281E7 /* AppDelegate.m */; };
+		18BC60AC1866481E00E281E7 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 18BC60AB1866481E00E281E7 /* AppDelegate.mm */; };
 		18BC60AF1866481E00E281E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18BC60AD1866481E00E281E7 /* Main.storyboard */; };
 		18BC60B71866481E00E281E7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18BC60B61866481E00E281E7 /* Images.xcassets */; };
 		18BC60BE1866481E00E281E7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BC60BD1866481E00E281E7 /* XCTest.framework */; };
@@ -98,7 +98,7 @@
 		18BC60A71866481E00E281E7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		18BC60A91866481E00E281E7 /* The Surfer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "The Surfer-Prefix.pch"; sourceTree = "<group>"; };
 		18BC60AA1866481E00E281E7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		18BC60AB1866481E00E281E7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		18BC60AB1866481E00E281E7 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		18BC60AE1866481E00E281E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18BC60B61866481E00E281E7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		18BC60BC1866481E00E281E7 /* The SurferTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "The SurferTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -297,7 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				18BC60AA1866481E00E281E7 /* AppDelegate.h */,
-				18BC60AB1866481E00E281E7 /* AppDelegate.m */,
+				18BC60AB1866481E00E281E7 /* AppDelegate.mm */,
 			);
 			name = Delegate;
 			sourceTree = "<group>";
@@ -490,7 +490,7 @@
 				18831F461867C44900491E74 /* SineWaveViewController.m in Sources */,
 				18E6C4731870CE4500D55C46 /* UIImage+OpenCV.mm in Sources */,
 				18831F4A1867C44900491E74 /* SpeechToTextModule.m in Sources */,
-				18BC60AC1866481E00E281E7 /* AppDelegate.m in Sources */,
+				18BC60AC1866481E00E281E7 /* AppDelegate.mm in Sources */,
 				18831F4E1867C44A00491E74 /* WaveDisplay.m in Sources */,
 				18BC60D81866485700E281E7 /* DetectionViewController.mm in Sources */,
 				18E6C46C1870CCA500D55C46 /* TrainViewController.mm in Sources */,

@@ -10,9 +10,11 @@
 
 @implementation ObjectAnalyzer
 
-- (id)initWithMats:(vector<Mat>)db {
+- (id)initWithMats:(vector<Mat>)db andColors:(vector<string>)clrs andTags:(vector<string>)tgs {
     if ((self = [super init])) {
         mats = db;
+        colors = clrs;
+        tags = tgs;
     }
     return self;
 }
@@ -74,7 +76,7 @@
     return std::to_string(red) + std::to_string(green) + std::to_string(blue);
 }
 
-- (vector<string>)matchImage:(cv::Mat)img withTags:(vector<string>)tags andColors:(vector<string>)colors {
+- (vector<string>)matchImage:(cv::Mat)img {
     clock_t start = clock();
     vector<vector<cv::DMatch>> db_matches;
     vector<vector<cv::DMatch>> good_matches;

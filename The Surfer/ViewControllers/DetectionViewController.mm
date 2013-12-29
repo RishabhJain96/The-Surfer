@@ -8,6 +8,8 @@
 
 #import "DetectionViewController.h"
 
+using namespace std;
+
 @interface DetectionViewController ()
 
 @end
@@ -78,6 +80,44 @@
     tts = [[GoogleTTS alloc] init];
     
     matchImage = false;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    vector<Mat> database;
+    vector<string> tgs;
+    vector<string> clrs;
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:true];
+    [hud setLabelText:@"Loading Database"];
+    NSString *output = [[self applicationDocumentsDirectory] stringByAppendingString:[NSString stringWithFormat:@"dbFinalF.yml"]];
+    NSString *tagOutput = [[self applicationDocumentsDirectory] stringByAppendingString:@"tagsFinalF.yml"];
+    
+    ifstream infile (tagOutput.UTF8String);
+    std::string line;
+    while (std::getline(infile, line))
+    {
+        std::string line_1 = line.substr(0, line.find("||"));
+        std::string line_2 = line.substr(line.find("||") + 2);
+        printf("Reading Tag Line: %s\n", line_1.c_str());
+        tgs.push_back(line_1);
+        clrs.push_back(line_2);
+    }
+    
+    FileStorage fs(output.UTF8String, FileStorage::READ);
+    for (int i = 0; i < tgs.size(); i++) {
+        printf("Adding %s Matrix \n", tgs[i].c_str());
+        Mat tmp;
+        fs[tgs[i]] >> tmp;
+        database.push_back(tmp);
+    }
+    
+    //NSString *outputlr = [[self applicationDocumentsDirectory] stringByAppendingString:@"threshold.yml"];
+    
+    
+    [hud hide:YES afterDelay:0.5];
+    matchImage = false;
+    
+    objectAnalyzer = [[ObjectAnalyzer alloc] initWithMats:database andColors:clrs andTags:tgs];
 }
 
 /**
@@ -209,10 +249,10 @@
         newFrame.size.height = expectedLabelSize.height;
         lblCurrent.frame = newFrame;
         
-        if ([content rangeOfString:@"what"].location != NSNotFound) {
+        if ([[content lowercaseString] rangeOfString:@"what"].location != NSNotFound) {
             // We need to see what is in front of us
             NSLog(@"Using SIFT");
-            
+            matchImage = true;
         }
     }
     
@@ -262,8 +302,38 @@
  */
 - (void)processImage:(Mat&)image {
     if (matchImage) {
-        
+        if (!image.empty() && image.depth() == CV_8U) {
+            NSLog(@"attempting match \n");
+            
+            /*
+            previousTime = (clock() - initialTime)/1000;
+            clock_t start = clock();
+            vector<string> found = sift->match(image, database, tags, colors);
+            clock_t end = clock();
+            double elapsed = double(end-start) / CLOCKS_PER_SEC;
+            
+            [Service createEntryWithText:@""]; // new line
+            for (unsigned i = 0; i < found.size(); i++) {
+                printf("Found: %s \n", found[i].c_str());
+                NSString *fdr = [NSString stringWithUTF8String:found[i].c_str()];
+                [self setLabelText:fdr];
+                [Service createEntryWithText:[NSString stringWithFormat:@" ------- ATTEMPTING TO MATCH --------"]];
+                [Service createEntryWithText:[NSString stringWithFormat:@"Found: %@", fdr]]; // add to CoreData
+            }
+            [Service createEntryWithText:[NSString stringWithFormat:@"Elapsed Time: %f", elapsed]];
+            [Service createEntryWithText:[NSString stringWithFormat:@" ------- FINISHED MATCHING --------"]];
+            [Service createEntryWithText:@""]; // new line
+             */
+            
+            vector<string> found = [objectAnalyzer matchImage:image];
+            for (unsigned i = 0; i < found.size(); i++) {
+                printf("Found: %s \n", found[i].c_str());
+            }
+            
+            
+        }
     }
+    matchImage = false;
 }
 
 #endif
@@ -283,6 +353,12 @@
         player = [[AVAudioPlayer alloc] initWithData:response error:nil];
         [player play];
     }];
+}
+
+- (NSString *)applicationDocumentsDirectory {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
+    return [NSString stringWithFormat:@"%@/", basePath];
 }
 
 

@@ -12,6 +12,8 @@
 // OpenCV Imports
 #import <opencv2/opencv.hpp>
 #import <opencv2/highgui/cap_ios.h>
+#include <fstream>
+
 
 //SpeechToText Imports
 #import "SpeechToTextModule.h"
@@ -20,6 +22,9 @@
 
 // ObjectAnalyzer Imports
 #import "ObjectAnalyzer.h"
+
+// MBProgressHUD Imports
+#import <MBProgressHUD/MBProgressHUD.h>
 
 using namespace cv;
 

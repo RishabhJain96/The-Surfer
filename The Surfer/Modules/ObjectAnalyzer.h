@@ -18,13 +18,15 @@ using namespace std;
 
 @interface ObjectAnalyzer : NSObject {
     vector<Mat> mats;
+    vector<string> tags;
+    vector<string> colors;
 }
 
 
-- (id)initWithMats:(vector<Mat>)mats;
+- (id)initWithMats:(vector<Mat>)mats andColors:(vector<string>)colors andTags:(vector<string>)tags;
 - (vector<KeyPoint>)getKeyPoints:(Mat)mat;
 - (Mat)getDescriptors:(Mat)img;
 - (string)getColorFromImage:(Mat)img withKeypointsVector:(vector<KeyPoint>)keypoints;
-- (vector<string>)matchImage:(Mat)img withTags:(vector<string>)tags andColors:(vector<string>)colors;
+- (vector<string>)matchImage:(Mat)img;
 
 @end
