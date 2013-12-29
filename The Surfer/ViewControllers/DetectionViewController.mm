@@ -15,6 +15,15 @@
 @implementation DetectionViewController
 @synthesize imgDisplay, microphone, videoCamera, speechDetector, lblCurrent, player, tts;
 
+/**
+ * Method: initWithNibName
+ * Description: Called once iOS framework initiates the class with the given nib
+ * Purpose: Doesn't really do anything in this program
+ *
+ * @param nibNameOrNil   - The nib name that was used to launch the controller
+ * @param nibBundleOrNil - The bundle of which the nib was launched
+ * @return returns an instance of this class given the nib and the bundle
+ */
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -24,8 +33,12 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+/**
+ * Method: viewDidLoad
+ * Description: Called once the view has been loaded into memory but before the view has been displayed
+ * Purpose: Sets up the view by creating the image display, the video camera, the speech detector, the descriptor label, the microphone, and the text to speech
+ */
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     // Setup Image Display
@@ -65,6 +78,11 @@
     tts = [[GoogleTTS alloc] init];
 }
 
+/**
+ * Method: didReceiveMemoryWarning
+ * Description: Called once the iOS operating system receives a memory warning
+ * Purpose: Doesn't really do anything but call the UIView's method for freeing up memory. Became obsolete with ARC.
+ */
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -73,6 +91,13 @@
 #pragma mark -
 #pragma mark - Speech to Text Methods
 
+/**
+ * Method: startVocalRecognition
+ * Description: Called once the vocal recognition has been started
+ * Purpose: If the speech detector is not recording then the assistant will use TTS to say "Speak Now" and then will begin recording. Otherwise, stops recording and does not process the data further.
+ *
+ * @param sender - the sender of the vocal recognition, not really used for anything.
+ */
 - (void)startVocalRecognition:(id)sender {
     if(![self.speechDetector recording]) {
         [self playText:@"Speak Now"];
@@ -88,6 +113,15 @@
 #pragma mark - 
 #pragma mark - SpeechToText Delegate Methods
 
+/**
+ * Method: powerData
+ * Description: Called everytime the power data from the microphone is received from the speech to text module
+ * Purpose: Used to change microphone image
+ *
+ * TODO: Add more intervals for the microphone to make the change in microphone size more detectable
+ *
+ * @param power - the power of the microphone between [0~1]
+ */
 - (void)powerData:(float)power {
     // if -1 make label say analyzing
     if(power == -1.0f) {
@@ -128,6 +162,14 @@
     }
 }
 
+/**
+ * Method: didReceiveVoiceResponse
+ * Description: Called once the Speech to Text module returns data containing the hypothesis and the confidence level.
+ * Purpose: Used to take in the user speech and determine what needs to be done. Currently, if the phrase contains the word "what" and "front" then SIFT will be used to determine what is in front of the user.
+ *
+ * @param data - the data that is received from the speech to text module. The data is formatted as an array with a dictionary inside. The dictionary contains the keys "confidence" and "utterance" where utterance is the hypothesized speech and confidence is the confidence level of the speech.
+ * @return     - If no is returned then calls the speech to text module again, but if yes is returned then stops the speech to text analysis.
+ */
 - (BOOL)didReceiveVoiceResponse:(NSData *)data {
     NSError* error;
     NSDictionary* json = [NSJSONSerialization
@@ -166,7 +208,7 @@
         lblCurrent.frame = newFrame;
         
         if ([content rangeOfString:@"what"].location != NSNotFound) {
-            // We need to see what is in front of us!
+            // We need to see what is in front of us
             NSLog(@"Using SIFT");
             
         }
@@ -175,13 +217,31 @@
     return YES;
 }
 
+/**
+ * Method: showSineWaveView
+ * Description: Called once the sine wave view must be displayed from the speech to text module
+ * Usage: Used so that no alert is shown from the speech to text module. Doesn't do anything else.
+ */
 - (void)showSineWaveView:(SineWaveViewController *)view {
     
 }
 
+/**
+ * Method: showLoadingView
+ * Description: Called once the loading view must be displayed from the speech to text module
+ * Usage: Used so that no loading view from the speech to text module is shown. Doesn't do anything else.
+ */
 - (void)showLoadingView {
-    NSLog(@"show loadingView");
+
 }
+
+/**
+ * Method: requestFailedWithError
+ * Description: Called once the speech to text module request has failed with the given error.
+ * Usage: Logs the error and doesn't do anything else.
+ *
+ * @param error - The error that the speech to text module received
+ */
 - (void)requestFailedWithError:(NSError *)error {
     NSLog(@"error: %@",error);
 }
@@ -190,14 +250,30 @@
 #pragma mark - OpenCV Delegate Methods
 
 #ifdef __cplusplus
+
+/**
+ * Method: processImage
+ * Description: Called once the video camera has an image that needs to be processed
+ * Usage: Used to process sift if necessary, otherwise doesn't do anything.
+ *
+ * @param image - the image that the video camera received that should be analyzed if necessary
+ */
 - (void)processImage:(Mat&)image {
 
 }
+
 #endif
 
 #pragma mark - 
 #pragma mark - GoogleTTS Methods
 
+/**
+ * Method: playText
+ * Description: Called if text needs to be spoken out loud to the user
+ * Usage: Used to inform the user of an event via TTS
+ *
+ * @param text - the text that needs to be spoken
+ */
 - (void)playText:(NSString *)text {
     [tts convertTextToSpeech:text withCompletion:^(NSMutableData *response) {
         player = [[AVAudioPlayer alloc] initWithData:response error:nil];
