@@ -303,34 +303,19 @@ using namespace std;
 - (void)processImage:(Mat&)image {
     if (matchImage) {
         if (!image.empty() && image.depth() == CV_8U) {
-            NSLog(@"attempting match \n");
-            
-            /*
-            previousTime = (clock() - initialTime)/1000;
-            clock_t start = clock();
-            vector<string> found = sift->match(image, database, tags, colors);
-            clock_t end = clock();
-            double elapsed = double(end-start) / CLOCKS_PER_SEC;
-            
-            [Service createEntryWithText:@""]; // new line
-            for (unsigned i = 0; i < found.size(); i++) {
-                printf("Found: %s \n", found[i].c_str());
-                NSString *fdr = [NSString stringWithUTF8String:found[i].c_str()];
-                [self setLabelText:fdr];
-                [Service createEntryWithText:[NSString stringWithFormat:@" ------- ATTEMPTING TO MATCH --------"]];
-                [Service createEntryWithText:[NSString stringWithFormat:@"Found: %@", fdr]]; // add to CoreData
-            }
-            [Service createEntryWithText:[NSString stringWithFormat:@"Elapsed Time: %f", elapsed]];
-            [Service createEntryWithText:[NSString stringWithFormat:@" ------- FINISHED MATCHING --------"]];
-            [Service createEntryWithText:@""]; // new line
-             */
+            NSLog(@"Attempting to Match Image");
             
             vector<string> found = [objectAnalyzer matchImage:image];
+            NSString *total = @"I found a ";
+            NSLog(@"Found Count: %lu", found.size());
             for (unsigned i = 0; i < found.size(); i++) {
-                printf("Found: %s \n", found[i].c_str());
+                NSString *fd = [NSString stringWithUTF8String:found[i].c_str()];
+                NSLog(@"Found: %@", fd);
+                total = [total stringByAppendingString:fd];
+                if (i != found.size() - 1) total = [total stringByAppendingString:@"and a "];
             }
             
-            
+            [self playText:total];
         }
     }
     matchImage = false;
@@ -354,6 +339,7 @@ using namespace std;
         [player play];
     }];
 }
+
 
 - (NSString *)applicationDocumentsDirectory {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);

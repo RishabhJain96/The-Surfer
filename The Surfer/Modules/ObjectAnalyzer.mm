@@ -59,11 +59,10 @@
             }
         }
     }
-    // printf("Final colors : red %d, green %d, blue %d\n", red, green, blue);
+
     red /= count;
     green /= count;
     blue /= count;
-    //  printf("Final colors (2) : red %d, green %d, blue %d\n", red, green, blue);
     
     int bins = 5;
     
