@@ -12,6 +12,8 @@
 
 - (id)initWithMats:(vector<Mat>)db andColors:(vector<string>)clrs andTags:(vector<string>)tgs {
     if ((self = [super init])) {
+        
+        
         mats = db;
         colors = clrs;
         tags = tgs;
@@ -35,7 +37,6 @@
     cv::Mat tmp2;
     detector.detect(img, tmp);
     extractor.compute(img, tmp, tmp2);
-    
     return tmp2;
 }
 
@@ -128,23 +129,55 @@
             if(dist < min_dist) min_dist = dist;
             if(dist > max_dist) max_dist = dist;
         }
+        
+        for( int j = 0; j < descriptors_1.rows; j++ ) {
+            if(db_matches[i][j].distance <= max(2 * min_dist, 0.02))
+                good_matches[i].push_back(db_matches[i][j]);
+            else
+                printf("%f distance is greater than %f\n", db_matches[i][j].distance, max(2 * min_dist, 0.02));
+        }
+        
         min_distances.push_back(min_dist);
         max_distances.push_back(max_dist);
         
         if (min_dist < total_min) total_min = min_dist;
         if (max_dist > total_max) total_max = max_dist;
     }
-    
+
     vector<string> ret;
-    for(unsigned i = 0; i < min_distances.size(); i++) {
+    
+    printf("Good Matches Size: %d", (int)good_matches.size());
+    for(int i = 0; i < min(5, (int) good_matches.size()); i++) {
+        int max = -1;
+        int index = -1;
+        for(int j = 0; j < good_matches.size(); j++) {
+            printf("Good Matches[%d].size() = %d\n", j, (int)good_matches[j].size());
+            if( (int) (good_matches[j].size()) > max) {
+                max = good_matches[j].size();
+                index = j;
+            }
+        }
+        
+        printf("%s %d\n", colormatchedtags[index].c_str(), max);
+        
+      //  if(some threshold here) {
+            ret.push_back(colormatchedtags[index].c_str());
+      //  }
+        good_matches[i].erase(good_matches[i].begin() + (index+1));
+    }
+    
+    
+    /*for(unsigned i = 0; i < min_distances.size(); i++) {
         //    printf("Total Min: %f | Min Distance: %f \n", total_min, min_distances[i]);
         //     printf("Total Max: %f | Max Distance: %f \n", total_max, max_distances[i]);
         //     printf("Good Matches Size: %lu \n", good_matches[i].size());
         if(abs(total_min - min_distances[i]) <= .03 && min_distances[i] <= 0.075) { // we need some sort of check here to ensure that bogus images aren't being thrown our way
             printf("%s is a good image with distance %f\n", colormatchedtags[i].c_str(), min_distances[i]);
             ret.push_back(colormatchedtags[i]);
+        } else {
+            printf("%s is a bad image with distance %f\n", colormatchedtags[i].c_str(), min_distances[i]);
         }
-    }
+    }*/
     
     clock_t end = clock();
     double elapsed_seconds = double(end-start) / CLOCKS_PER_SEC;

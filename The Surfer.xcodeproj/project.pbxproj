@@ -30,7 +30,6 @@
 		18831F491867C44900491E74 /* SineWaveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18831F3C1867C44900491E74 /* SineWaveViewController.xib */; };
 		18831F4A1867C44900491E74 /* SpeechToTextModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 18831F3E1867C44900491E74 /* SpeechToTextModule.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18831F4B1867C44900491E74 /* SpeechToTextModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 18831F3E1867C44900491E74 /* SpeechToTextModule.m */; };
-		18831F4C1867C44900491E74 /* Speex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18831F3F1867C44900491E74 /* Speex.framework */; };
 		18831F4D1867C44900491E74 /* Speex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18831F3F1867C44900491E74 /* Speex.framework */; };
 		18831F4E1867C44A00491E74 /* WaveDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 18831F411867C44900491E74 /* WaveDisplay.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18831F4F1867C44A00491E74 /* WaveDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 18831F411867C44900491E74 /* WaveDisplay.m */; };
@@ -50,7 +49,7 @@
 		18BC60D81866485700E281E7 /* DetectionViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 18BC60D71866485700E281E7 /* DetectionViewController.mm */; };
 		18E6C46C1870CCA500D55C46 /* TrainViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 18E6C46B1870CCA500D55C46 /* TrainViewController.mm */; };
 		18E6C4731870CE4500D55C46 /* UIImage+OpenCV.mm in Sources */ = {isa = PBXBuildFile; fileRef = 18E6C4711870CE4500D55C46 /* UIImage+OpenCV.mm */; };
-		18EB1C271867BE6500FF1507 /* Speex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EB1C261867BE6500FF1507 /* Speex.framework */; };
+		637E71DD18751CCB0044504A /* Speex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EB1C261867BE6500FF1507 /* Speex.framework */; };
 		9A45DF01EF0940F0AA9931D4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C65475AE2CC4CB1ADFB3D0D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -122,9 +121,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18EB1C271867BE6500FF1507 /* Speex.framework in Frameworks */,
+				637E71DD18751CCB0044504A /* Speex.framework in Frameworks */,
 				18BC609E1866481E00E281E7 /* CoreGraphics.framework in Frameworks */,
-				18831F4C1867C44900491E74 /* Speex.framework in Frameworks */,
 				18BC60A01866481E00E281E7 /* UIKit.framework in Frameworks */,
 				18BC609C1866481E00E281E7 /* Foundation.framework in Frameworks */,
 				9A45DF01EF0940F0AA9931D4 /* libPods.a in Frameworks */,
@@ -632,6 +630,7 @@
 					"/Users/Rishabh/Google\\ Drive/Programming/Projects/Objective-CProjects/iOS7/The\\ Surfer/SpeechToText",
 					"/Users/Rishabh/Google\\ Drive/Programming/Projects/Objective-CProjects/iOS7/The\\ Surfer/The\\ Surfer/SpeechToText",
 					"/Users/Rishabh/Google\\ Drive/Programming/Projects/Objective-CProjects/iOS7/The\\ Surfer/The\\ Surfer",
+					"/Users/16vineetk/Desktop/Surfer/the-surfer-synopsys/SpeechToText",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "The Surfer/The Surfer-Prefix.pch";
@@ -655,6 +654,7 @@
 					"/Users/Rishabh/Google\\ Drive/Programming/Projects/Objective-CProjects/iOS7/The\\ Surfer/SpeechToText",
 					"/Users/Rishabh/Google\\ Drive/Programming/Projects/Objective-CProjects/iOS7/The\\ Surfer/The\\ Surfer/SpeechToText",
 					"/Users/Rishabh/Google\\ Drive/Programming/Projects/Objective-CProjects/iOS7/The\\ Surfer/The\\ Surfer",
+					"/Users/16vineetk/Desktop/Surfer/the-surfer-synopsys/SpeechToText",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "The Surfer/The Surfer-Prefix.pch";

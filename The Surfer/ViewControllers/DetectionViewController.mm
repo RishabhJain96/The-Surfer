@@ -83,6 +83,9 @@ using namespace std;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    
+    [self.videoCamera start];
+    
     vector<Mat> database;
     vector<string> tgs;
     vector<string> clrs;
@@ -102,7 +105,7 @@ using namespace std;
         tgs.push_back(line_1);
         clrs.push_back(line_2);
     }
-    
+
     FileStorage fs(output.UTF8String, FileStorage::READ);
     for (int i = 0; i < tgs.size(); i++) {
         printf("Adding %s Matrix \n", tgs[i].c_str());
@@ -118,6 +121,10 @@ using namespace std;
     matchImage = false;
     
     objectAnalyzer = [[ObjectAnalyzer alloc] initWithMats:database andColors:clrs andTags:tgs];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [self.videoCamera stop];
 }
 
 /**
