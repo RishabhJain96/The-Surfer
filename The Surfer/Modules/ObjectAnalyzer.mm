@@ -144,46 +144,41 @@
         if (max_dist > total_max) total_max = max_dist;
     }
 
-    vector<string> ret;
+    vector<string> returnVector;
     
     printf("Good Matches Size: %d", (int)good_matches.size());
-    for(int i = 0; i < min(5, (int) good_matches.size()); i++) {
-        int max = -1;
-        int index = -1;
-        for(int j = 0; j < good_matches.size(); j++) {
-            printf("Good Matches[%d].size() = %d\n", j, (int)good_matches[j].size());
-            if( (int) (good_matches[j].size()) > max) {
-                max = good_matches[j].size();
-                index = j;
+    
+    
+    for(int i = 0; i < good_matches.size(); i++) {
+        // each one of these is an image
+        // good_matches[i] is that im'ages matchse
+        double d1 = 100000; // smallest
+        double d2 = 100000; // second smallest
+        
+        for(int j = 0; j < good_matches[i].size(); j++) {
+            if(good_matches[i][j].distance < d1) {
+                d2 = d1;
+                d1 = good_matches[i][j].distance;
+            } else if(good_matches[i][j].distance < d2) {
+                d2 = good_matches[i][j].distance;
             }
         }
-        
-        printf("%s %d\n", colormatchedtags[index].c_str(), max);
-        
-      //  if(some threshold here) {
-            ret.push_back(colormatchedtags[index].c_str());
-      //  }
-        good_matches[i].erase(good_matches[i].begin() + (index+1));
-    }
-    
-    
-    /*for(unsigned i = 0; i < min_distances.size(); i++) {
-        //    printf("Total Min: %f | Min Distance: %f \n", total_min, min_distances[i]);
-        //     printf("Total Max: %f | Max Distance: %f \n", total_max, max_distances[i]);
-        //     printf("Good Matches Size: %lu \n", good_matches[i].size());
-        if(abs(total_min - min_distances[i]) <= .03 && min_distances[i] <= 0.075) { // we need some sort of check here to ensure that bogus images aren't being thrown our way
-            printf("%s is a good image with distance %f\n", colormatchedtags[i].c_str(), min_distances[i]);
-            ret.push_back(colormatchedtags[i]);
-        } else {
-            printf("%s is a bad image with distance %f\n", colormatchedtags[i].c_str(), min_distances[i]);
+        printf("%f %f\n", d1, d2);
+        double r = d1/d2; // get the ratio
+        if(r <= 0.8) {
+            // good match
+            returnVector.push_back(tags[i]);
         }
-    }*/
+        
+    }
     
     clock_t end = clock();
     double elapsed_seconds = double(end-start) / CLOCKS_PER_SEC;
     printf("Took %f time to run\n", elapsed_seconds);
-    
-    return ret;
+    for(int i = 0; i < returnVector.size(); i++) {
+        printf("%s\n", returnVector[i].c_str());
+    }
+    return returnVector;
 }
 
 
