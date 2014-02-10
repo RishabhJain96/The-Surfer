@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "The Surfer/Modules/ObjectAnalyzer.mm"
-            timestampString = "413686098.516257"
+            timestampString = "413766979.367994"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
             landmarkName = "-matchImage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "The Surfer/Modules/ObjectAnalyzer.mm"
-            timestampString = "413686087.077015"
+            timestampString = "413766979.367994"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
             landmarkName = "-matchImage:"
             landmarkType = "5">
             <Locations>
@@ -61,52 +61,6 @@
                   startingLineNumber = "160"
                   endingLineNumber = "160"
                   offsetFromSymbolStart = "5344">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "The Surfer/Modules/ObjectAnalyzer.mm"
-            timestampString = "413687765.164105"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
-            landmarkName = "-matchImage:"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[ObjectAnalyzer matchImage:]"
-                  moduleName = "The Surfer"
-                  urlString = "file:///Users/Rishabh/Google%20Drive/Programming/Projects/Objective-CProjects/iOS7/The%20Surfer/The%20Surfer/Modules/ObjectAnalyzer.mm"
-                  timestampString = "413688002.206855"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "173"
-                  endingLineNumber = "173"
-                  offsetFromSymbolStart = "6068">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[ObjectAnalyzer matchImage:]"
-                  moduleName = "The Surfer"
-                  urlString = "file:///Users/Rishabh/Google%20Drive/Programming/Projects/Objective-CProjects/iOS7/The%20Surfer/The%20Surfer/Modules/ObjectAnalyzer.mm"
-                  timestampString = "413688002.207231"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "173"
-                  endingLineNumber = "173"
-                  offsetFromSymbolStart = "6234">
                </Location>
             </Locations>
          </BreakpointContent>

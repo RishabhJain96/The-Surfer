@@ -1,6 +1,6 @@
 //
 //  ObjectAnalyzer.m
-//  The Sifter
+//  The Surfer
 //
 //  Created by Rishabh Jain on 12/29/13.
 //  Copyright (c) 2013 RJVK Productions. All rights reserved.
@@ -23,7 +23,7 @@
 
 - (vector<KeyPoint>)getKeyPoints:(Mat)mat {
     int minHessian = 400;
-    cv::SiftFeatureDetector detector(minHessian);
+    cv::SurfFeatureDetector detector(minHessian);
     vector<cv::KeyPoint> tmp;
     detector.detect(mat, tmp);
     return tmp;
@@ -31,8 +31,8 @@
 
 - (Mat)getDescriptors:(Mat)img {
     int minHessian = 400;
-    cv::SiftFeatureDetector detector(minHessian);
-    cv::SiftDescriptorExtractor extractor;
+    cv::SurfFeatureDetector detector(minHessian);
+    cv::SurfDescriptorExtractor extractor;
     vector<cv::KeyPoint> tmp;
     cv::Mat tmp2;
     detector.detect(img, tmp);
@@ -80,8 +80,8 @@
     clock_t start = clock();
     vector<vector<cv::DMatch>> db_matches;
     vector<vector<cv::DMatch>> good_matches;
-    cv::SiftFeatureDetector detector(400);
-    cv::SiftDescriptorExtractor extractor;
+    cv::SurfFeatureDetector detector(400);
+    cv::SurfDescriptorExtractor extractor;
     
     std::vector<cv::KeyPoint> keypoints_1; // image's keypoints
     detector.detect(img, keypoints_1 );
@@ -121,6 +121,7 @@
         // cout << "M = "<< endl << " "  << colormatchedmats[i] << endl << endl;
         
         matcher.match(descriptors_1, colormatchedmats[i], db_matches[i]);
+
         
         double max_dist = 0; double min_dist = 100;
         
@@ -148,7 +149,7 @@
     
     printf("Good Matches Size: %d", (int)good_matches.size());
     
-    
+    /*
     for(int i = 0; i < good_matches.size(); i++) {
         // each one of these is an image
         // good_matches[i] is that im'ages matchse
@@ -165,6 +166,33 @@
         }
         
     }
+     */
+    for(int i = 0; i < good_matches.size(); i++) {
+        // each one of these is an image
+        // good_matches[i] is that im'ages matchse
+        double d1 = 100000; // smallest
+        double d2 = 100000; // second smallest
+        printf("\nGM Size: %lu", good_matches.size());
+        if (good_matches[i].size() > 2) {
+            for(int j = 0; j < good_matches[i].size(); j++) {
+                if(good_matches[i][j].distance < d1) {
+                    d2 = d1;
+                    d1 = good_matches[i][j].distance;
+                } else if(good_matches[i][j].distance < d2) {
+                    d2 = good_matches[i][j].distance;
+                }
+            }
+            
+            printf("\nMin Distance for image %s are %f %f\n", tags[i].c_str(), d1, d2);
+            double r = d1/d2; // get the ratio
+            printf("%s has a ratio of %f\n", tags[i].c_str(), r);
+            if(r > 0.85) {
+                // good match
+                returnVector.push_back(tags[i]);
+            }
+        }
+    }
+    
     
     clock_t end = clock();
     double elapsed_seconds = double(end-start) / CLOCKS_PER_SEC;
