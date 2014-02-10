@@ -1,6 +1,6 @@
 //
 //  ObjectAnalyzer.m
-//  The Surfer
+//  The Sifter
 //
 //  Created by Rishabh Jain on 12/29/13.
 //  Copyright (c) 2013 RJVK Productions. All rights reserved.
@@ -23,7 +23,7 @@
 
 - (vector<KeyPoint>)getKeyPoints:(Mat)mat {
     int minHessian = 400;
-    cv::SurfFeatureDetector detector(minHessian);
+    cv::SiftFeatureDetector detector(minHessian);
     vector<cv::KeyPoint> tmp;
     detector.detect(mat, tmp);
     return tmp;
@@ -31,8 +31,8 @@
 
 - (Mat)getDescriptors:(Mat)img {
     int minHessian = 400;
-    cv::SurfFeatureDetector detector(minHessian);
-    cv::SurfDescriptorExtractor extractor;
+    cv::SiftFeatureDetector detector(minHessian);
+    cv::SiftDescriptorExtractor extractor;
     vector<cv::KeyPoint> tmp;
     cv::Mat tmp2;
     detector.detect(img, tmp);
@@ -80,8 +80,8 @@
     clock_t start = clock();
     vector<vector<cv::DMatch>> db_matches;
     vector<vector<cv::DMatch>> good_matches;
-    cv::SurfFeatureDetector detector(400);
-    cv::SurfDescriptorExtractor extractor;
+    cv::SiftFeatureDetector detector(400);
+    cv::SiftDescriptorExtractor extractor;
     
     std::vector<cv::KeyPoint> keypoints_1; // image's keypoints
     detector.detect(img, keypoints_1 );
@@ -105,10 +105,10 @@
         if(color.at(0) == colors[i].at(0)) count++;
         if(color.at(1) == colors[i].at(1)) count++;
         if(color.at(2) == colors[i].at(2)) count++;
-        if(count >= 2) {
+        //if(count >= 2) {
             colormatchedmats.push_back(mats[i]);
             colormatchedtags.push_back(tags[i]);
-        }
+        //}
     }
     
     for(unsigned i = 0; i < colormatchedmats.size(); i++) {
@@ -131,10 +131,10 @@
         }
         
         for( int j = 0; j < descriptors_1.rows; j++ ) {
-            if(db_matches[i][j].distance <= max(2 * min_dist, 0.02))
+            //if(db_matches[i][j].distance <= max(2 * min_dist, 0.02))
                 good_matches[i].push_back(db_matches[i][j]);
-            else
-                printf("%f distance is greater than %f\n", db_matches[i][j].distance, max(2 * min_dist, 0.02));
+           // else
+             //   printf("%f distance is greater than %f\n", db_matches[i][j].distance, max(2 * min_dist, 0.02));
         }
         
         min_distances.push_back(min_dist);
@@ -152,20 +152,14 @@
     for(int i = 0; i < good_matches.size(); i++) {
         // each one of these is an image
         // good_matches[i] is that im'ages matchse
-        double d1 = 100000; // smallest
-        double d2 = 100000; // second smallest
+        double total = 0;
         
         for(int j = 0; j < good_matches[i].size(); j++) {
-            if(good_matches[i][j].distance < d1) {
-                d2 = d1;
-                d1 = good_matches[i][j].distance;
-            } else if(good_matches[i][j].distance < d2) {
-                d2 = good_matches[i][j].distance;
-            }
+            total += good_matches[i][j].distance;
         }
-        printf("%f %f\n", d1, d2);
-        double r = d1/d2; // get the ratio
-        if(r <= 0.8) {
+        total = total/good_matches[i].size();
+        printf("%s has average of %f\n\n", tags[i].c_str(), total);
+        if(total < 300) {
             // good match
             returnVector.push_back(tags[i]);
         }
