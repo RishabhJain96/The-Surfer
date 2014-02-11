@@ -132,7 +132,7 @@
         }
         
         for( int j = 0; j < descriptors_1.rows; j++ ) {
-            //if(db_matches[i][j].distance <= max(2 * min_dist, 0.02))
+            if(db_matches[i][j].distance <= max(2 * min_dist, 0.02))
                 good_matches[i].push_back(db_matches[i][j]);
            // else
              //   printf("%f distance is greater than %f\n", db_matches[i][j].distance, max(2 * min_dist, 0.02));
@@ -147,9 +147,11 @@
 
     vector<string> returnVector;
     
-    printf("Good Matches Size: %d", (int)good_matches.size());
+    double ttotal = 0;
+    double count = 0;
+    double min = 100;
+    double max = -1;
     
-    /*
     for(int i = 0; i < good_matches.size(); i++) {
         // each one of these is an image
         // good_matches[i] is that im'ages matchse
@@ -159,40 +161,38 @@
             total += good_matches[i][j].distance;
         }
         total = total/good_matches[i].size();
+        if(total < min) min = total;
+        if(total > max) max = total;
+        ttotal += ((1-total)*9.65)*(total);
+        count += ((1-total)*9.65);
         printf("%s has average of %f\n\n", tags[i].c_str(), total);
-        if(total < 300) {
+        /*
+        if(total < 0.525) {
             // good match
             returnVector.push_back(tags[i]);
         }
-        
-    }
-     */
-    for(int i = 0; i < good_matches.size(); i++) {
-        // each one of these is an image
-        // good_matches[i] is that im'ages matchse
-        double d1 = 100000; // smallest
-        double d2 = 100000; // second smallest
-        printf("\nGM Size: %lu", good_matches.size());
-        if (good_matches[i].size() > 2) {
-            for(int j = 0; j < good_matches[i].size(); j++) {
-                if(good_matches[i][j].distance < d1) {
-                    d2 = d1;
-                    d1 = good_matches[i][j].distance;
-                } else if(good_matches[i][j].distance < d2) {
-                    d2 = good_matches[i][j].distance;
-                }
-            }
-            
-            printf("\nMin Distance for image %s are %f %f\n", tags[i].c_str(), d1, d2);
-            double r = d1/d2; // get the ratio
-            printf("%s has a ratio of %f\n", tags[i].c_str(), r);
-            if(r > 0.85) {
-                // good match
-                returnVector.push_back(tags[i]);
-            }
-        }
+         */
     }
     
+    double range = max - min;
+    
+    printf("\nNew Average: %f\n", ttotal/count);
+    
+    double avg = ttotal/count;
+    for (int i = 0; i < good_matches.size(); i++) {
+        double total = 0;
+        
+        for(int j = 0; j < good_matches[i].size(); j++) {
+            total += good_matches[i][j].distance;
+        }
+        
+        total = total/good_matches[i].size();
+        if(range != 0 && range < 0.1) break;
+        if (total <= avg)  {
+            returnVector.push_back(tags[i]);
+        }
+
+    }
     
     clock_t end = clock();
     double elapsed_seconds = double(end-start) / CLOCKS_PER_SEC;
